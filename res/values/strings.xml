@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Joshua said:</string>
+    <string name="hello">Dayna said:</string>
     <string name="app_name">LonelyTwitter</string>
+    
+    <string name="count_name">Twitter Counter</string>
     <string name="save">Save</string>
     <string name="clear">Clear</string>
     
