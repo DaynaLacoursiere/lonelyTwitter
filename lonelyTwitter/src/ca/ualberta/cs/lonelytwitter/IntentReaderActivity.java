@@ -1,9 +1,9 @@
 package ca.ualberta.cs.lonelytwitter;
 
-import android.os.Bundle;
-import android.widget.TextView;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
 
 public class IntentReaderActivity extends Activity {
 
@@ -14,17 +14,30 @@ public class IntentReaderActivity extends Activity {
 	public static final int REVERSE = 2;
 	public static final int DOUBLE = 3;
 	
-	private String text;
+	private String text=null;
 	private int mode;
 	
 	public String getText() {
 		return text;
 	}
 	
+	
+	public TextView getView() {
+		return (TextView) findViewById(R.id.intentText);
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_intent_reader);
+		Intent intent = getIntent();
+		text = intent.getStringExtra(TEXT_KEY); //initialized earlier
+		mode = intent.getIntExtra(TRANSFORM_KEY, NORMAL);
+		text = transformText(text);
+		getView().setText(text);
+		if (!intent.hasExtra(TEXT_KEY)){
+			defaultText();
+		}
 	}
 	
 	public String transformText(String text) {
@@ -41,5 +54,8 @@ public class IntentReaderActivity extends Activity {
 				return text + text;
 		}
 		return text;
+	}
+	public void defaultText(){
+		getView().setText("default string");
 	}
 }

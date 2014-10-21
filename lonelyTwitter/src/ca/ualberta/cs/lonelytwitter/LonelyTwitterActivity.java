@@ -20,6 +20,8 @@ import android.widget.ListView;
 
 public class LonelyTwitterActivity extends Activity {
 
+
+	public static final String TEXT_KEY = "TEXT";
 	private static final String FILENAME = "file.json";
 	private EditText bodyText;
 	private ListView oldTweetsList;
@@ -48,7 +50,13 @@ public class LonelyTwitterActivity extends Activity {
 			}
 		});
 	}
-
+	
+	public ListView getListView(){
+		return oldTweetsList;
+	}
+	
+	
+	
 	@Override
 	protected void onStart() {
 		// TODO Auto-generated method stub
